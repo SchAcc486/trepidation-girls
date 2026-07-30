@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bo78ixq2exdaj"]
+
+[ext_resource type="ArrayMesh" uid="uid://cl7wnkkh64u2s" path="res://assets/log.obj" id="1_v504e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aashl"]
+size = Vector3(0.5, 0.389, 3.75)
+
+[node name="log" type="StaticBody3D" unique_id=927335229]
+collision_layer = 8
+collision_mask = 6
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=1939574159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20932983, 0)
+shape = SubResource("BoxShape3D_aashl")
+
+[node name="texture" type="MeshInstance3D" parent="." unique_id=672240132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.2, 0)
+mesh = ExtResource("1_v504e")
