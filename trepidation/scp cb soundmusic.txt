@@ -1,0 +1,33 @@
+scp cb sound/music
+
+horror 4
+horror 5
+horror 10
+spiral
+horror 13
+room2sl049spawn
+room2elevatordeath
+prisonvoices
+explosion
+see173
+announcement4 - suspicious stay paranoid
+announcement5 - faculty gym
+announcement3 - motivational seminar
+announcement1 - pizza day
+announcement2 - security first step safe work environment
+announcement6 - freshly brewed coffee
+announcement7 - annual movie night
+079
+096chase
+205
+1123
+ohgod
+scpradio6 - report all suspect behaviour
+weird radio - evil reverse message
+scpradio - instrumental
+scpradio4 - nothing will help
+scpradio9 - feed ur friend
+scpradio2 - pizza
+scpradio5 - check for spiders
+ambient8 - forest jingle
+ambient10 - forest crickets

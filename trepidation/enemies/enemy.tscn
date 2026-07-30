@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dn2n3d6e3ve2t"]
+
+[ext_resource type="Texture2D" uid="uid://vble124mc80k" path="res://textures/jeffthekiller.jpg" id="1_7k104"]
+[ext_resource type="Script" uid="uid://4f5o783ns0h" path="res://enemies/enemy.gd" id="1_orwns"]
+[ext_resource type="AudioStream" uid="uid://th2df2tt3mce" path="res://sounds/im-jeff-the-killer.ogg" id="2_7frlh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qi2p4"]
+albedo_texture = ExtResource("1_7k104")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iifgy"]
+material = SubResource("StandardMaterial3D_qi2p4")
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gyqm"]
+size = Vector3(1, 2, 0.4710083)
+
+[node name="jeff_the_killer" type="CharacterBody3D" unique_id=1926018893]
+script = ExtResource("1_orwns")
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=15430563]
+shape = SubResource("CapsuleShape3D_4gyqm")
+
+[node name="texture" type="MeshInstance3D" parent="." unique_id=992291659]
+mesh = SubResource("CapsuleMesh_iifgy")
+
+[node name="sound effect" type="AudioStreamPlayer3D" parent="." unique_id=1916721601]
+stream = ExtResource("2_7frlh")
+attenuation_model = 1
+unit_size = 4.0
+
+[node name="ominous light of doom" type="OmniLight3D" parent="." unique_id=1425354184]
+light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
+light_volumetric_fog_energy = 5.0
+light_specular = 16.0
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+omni_range = 10.0
+omni_attenuation = 2.0
+
+[node name="touchregion" type="Area3D" parent="." unique_id=996422107]
+collision_layer = 2
+collision_mask = 4
+
+[node name="hitbox" type="CollisionShape3D" parent="touchregion" unique_id=150398190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4689026)
+shape = SubResource("BoxShape3D_4gyqm")
+
+[connection signal="finished" from="sound effect" to="." method="_on_audio_stream_player_3d_finished"]
+[connection signal="body_entered" from="touchregion" to="." method="_on_touchregion_body_entered"]

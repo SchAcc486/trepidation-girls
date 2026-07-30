@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b5a6gknq3g63c"]
+
+[ext_resource type="Texture2D" uid="uid://6xdjeyy37udp" path="res://textures/slendy.png" id="1_4ldor"]
+[ext_resource type="Script" uid="uid://dobf5gh06w7xc" path="res://enemies/slenderman.gd" id="1_t8awg"]
+[ext_resource type="AudioStream" uid="uid://cexgnobu63h3d" path="res://sounds/static.ogg" id="3_aquly"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ldor"]
+size = Vector3(1, 4.2299805, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aquly"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_4ldor")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ldor"]
+material = SubResource("StandardMaterial3D_aquly")
+size = Vector2(4, 5)
+orientation = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 20.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aquly"]
+size = Vector3(1, 4.2299805, 1)
+
+[node name="slenderman" type="CharacterBody3D" unique_id=602815595]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_t8awg")
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=432736600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1103442, 0)
+shape = SubResource("BoxShape3D_4ldor")
+
+[node name="slenderman" type="MeshInstance3D" parent="." unique_id=627674403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("PlaneMesh_4ldor")
+
+[node name="tv_static_bleeds" type="OmniLight3D" parent="." unique_id=2072111286]
+light_color = Color(0.31925523, 0.31925526, 0.31925526, 1)
+light_size = 2.0
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="disappearing_hat_trick" type="Area3D" parent="." unique_id=1295849750]
+collision_layer = 0
+collision_mask = 4
+
+[node name="hitbox" type="CollisionShape3D" parent="disappearing_hat_trick" unique_id=365906015]
+shape = SubResource("SphereShape3D_g4v7s")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="spawntimer" type="Timer" parent="." unique_id=1412585675]
+wait_time = 5.0
+one_shot = true
+
+[node name="static" type="AudioStreamPlayer3D" parent="." unique_id=1029356658]
+stream = ExtResource("3_aquly")
+volume_db = 30.0
+unit_size = 0.1
+pitch_scale = 0.05
+autoplay = true
+parameters/looping = true
+
+[node name="forbidden_area" type="Area3D" parent="." unique_id=1543088613]
+collision_layer = 0
+collision_mask = 32
+
+[node name="hitbox" type="CollisionShape3D" parent="forbidden_area" unique_id=310158245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1103442, 0)
+shape = SubResource("BoxShape3D_aquly")
+
+[node name="randomspawn" type="Timer" parent="." unique_id=553139243]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="disappearing_hat_trick" to="." method="_on_disappearing_hat_trick_body_entered"]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout"]
+[connection signal="area_entered" from="forbidden_area" to="." method="_on_forbidden_area_area_entered"]
+[connection signal="timeout" from="randomspawn" to="." method="_on_randomspawn_timeout"]

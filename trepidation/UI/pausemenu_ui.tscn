@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bgdivemaq2jpe"]
+
+[ext_resource type="Script" uid="uid://cpdy3eua5iabr" path="res://UI/pausemenu.gd" id="1_cph68"]
+
+[sub_resource type="Gradient" id="Gradient_n67t0"]
+offsets = PackedFloat32Array(0.0125, 1)
+colors = PackedColorArray(0.7197523, 0.102965586, 0.33834365, 1, 0.36255014, 0, 0.01614984, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cph68"]
+noise_type = 0
+frequency = 0.013
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4v7s"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_cph68")
+color_ramp = SubResource("Gradient_n67t0")
+seamless = true
+normalize = false
+seamless_blend_skirt = 1.0
+
+[sub_resource type="Animation" id="Animation_n67t0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.93333334, 0.93333334, 0.93333334, 0.5019608)]
+}
+
+[sub_resource type="Animation" id="Animation_cph68"]
+resource_name = "flesh"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(0.6, 0.6, 0.6830202),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(6, -0.6, 1),
+"update": 0,
+"values": [Color(0.9333369, 0.9333369, 0.9333369, 0.5), Color(2.5691063, 0, 0.6312881, 0.25100002), Color(0.9333369, 0.9333369, 0.9333369, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31hj5"]
+_data = {
+&"RESET": SubResource("Animation_n67t0"),
+&"flesh": SubResource("Animation_cph68")
+}
+
+[node name="pausemenu" type="CanvasLayer" unique_id=1796768069]
+process_mode = 3
+layer = 4
+script = ExtResource("1_cph68")
+
+[node name="background" type="TextureRect" parent="." unique_id=289099650]
+modulate = Color(0.93333334, 0.93333334, 0.93333334, 0.5019608)
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("NoiseTexture2D_g4v7s")
+stretch_mode = 1
+
+[node name="pause" type="Control" parent="." unique_id=302051098]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="pause" unique_id=1849286390]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.99976
+offset_right = 141.00171
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "paused"
+
+[node name="bars" type="Control" parent="." unique_id=241599814]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="settings" type="Button" parent="bars" unique_id=248511483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 29.0
+offset_right = 99.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "settings
+"
+
+[node name="resume" type="Button" parent="bars" unique_id=1057224771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -77.0
+offset_right = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "resume
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1035720833]
+process_mode = 2
+libraries/ = SubResource("AnimationLibrary_31hj5")
+autoplay = &"flesh"
+
+[connection signal="pressed" from="bars/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="bars/resume" to="." method="_on_resume_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bh7decdav67h2"]
+
+[ext_resource type="Texture2D" uid="uid://cdvucynbueve0" path="res://assets/bark.png" id="1_2u6hs"]
+
+[resource]
+resource_name = "m_52f68350-2ca5-487c-f8e3-5fbd9c5bee98"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_2u6hs")
+texture_filter = 0
+texture_repeat = false
+distance_fade_mode = 1
+distance_fade_max_distance = 7.0

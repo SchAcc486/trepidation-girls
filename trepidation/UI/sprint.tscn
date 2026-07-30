@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cmtyxvn2wwo64"]
+
+[sub_resource type="GDScript" id="GDScript_hwaud"]
+resource_name = "sprint"
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Globals.game_paused:
+		return;
+	$sprint_bar.value = Globals.player_sprint;
+"
+
+[sub_resource type="Gradient" id="Gradient_hwaud"]
+colors = PackedColorArray(0.22352941, 0.14509805, 0.08627451, 1, 0.03137255, 0.03529412, 0.003921569, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5436r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1rr4h"]
+width = 350
+height = 40
+noise = SubResource("FastNoiseLite_5436r")
+color_ramp = SubResource("Gradient_hwaud")
+
+[sub_resource type="Gradient" id="Gradient_5436r"]
+colors = PackedColorArray(0, 0.19103107, 0.44949585, 1, 3.272891e-06, 0.5898574, 0.8990273, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1rr4h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rriaa"]
+width = 350
+height = 40
+noise = SubResource("FastNoiseLite_1rr4h")
+color_ramp = SubResource("Gradient_5436r")
+
+[node name="sprint" type="CanvasLayer" unique_id=940747815]
+script = SubResource("GDScript_hwaud")
+
+[node name="sprint_bar" type="TextureProgressBar" parent="." unique_id=1476185631]
+offset_left = 35.0
+offset_top = 100.0
+offset_right = 385.0
+offset_bottom = 140.0
+value = 100.0
+texture_under = SubResource("NoiseTexture2D_1rr4h")
+texture_progress = SubResource("NoiseTexture2D_rriaa")

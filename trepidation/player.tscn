@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://benxwfibwe53f"]
+
+[ext_resource type="Script" uid="uid://doc2m34gqjuj" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="AudioStream" uid="uid://cod6lwyo4frcd" path="res://sounds/flashlight.ogg" id="2_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://nce42pe4lxvt" path="res://sounds/footsteps-on-grass.mp3" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://bn47ufpp0gxer" path="res://sounds/camera-shutter-sfx.ogg" id="4_hqtel"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="Gradient" id="Gradient_i3pqv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
+gradient = SubResource("Gradient_i3pqv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0xbq"]
+albedo_texture = SubResource("GradientTexture2D_i3pqv")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+material = SubResource("StandardMaterial3D_u0xbq")
+radial_segments = 6
+rings = 1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qq5q4"]
+points = PackedVector3Array(0, 0, 0, -40, -40, -40, 40, -40, -40, 40, 40, -40, -40, 40, -40)
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_flash_high/camera_flash_low:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_flash_high:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("camera_flash_high:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "camera_flash"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_flash_high/camera_flash_low:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_flash_high:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("camera_flash_high:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sweqy"]
+_data = {
+&"RESET": SubResource("Animation_i3pqv"),
+&"camera_flash": SubResource("Animation_hqtel")
+}
+
+[sub_resource type="FogMaterial" id="FogMaterial_i3pqv"]
+density = 0.03
+
+[node name="willow" type="CharacterBody3D" unique_id=538516045]
+script = ExtResource("1_4flbx")
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=876665192]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="texture" type="MeshInstance3D" parent="." unique_id=447638142]
+mesh = SubResource("CapsuleMesh_4flbx")
+
+[node name="cameracast" type="RayCast3D" parent="." unique_id=1167145077]
+enabled = false
+
+[node name="flashlight" type="Node3D" parent="." unique_id=469953773]
+visible = false
+
+[node name="just_light" type="SpotLight3D" parent="flashlight" unique_id=1730973042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40987742, 0)
+light_color = Color(0.9289869, 1, 0.8601269, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 0.0
+spot_range = 50.0
+spot_attenuation = 0.6
+spot_angle = 25.0
+
+[node name="click" type="AudioStreamPlayer3D" parent="flashlight" unique_id=1198870945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40987742, 0)
+stream = ExtResource("2_i3pqv")
+volume_db = -5.0
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1344151519]
+stream = ExtResource("2_onrkg")
+autoplay = true
+parameters/looping = true
+
+[node name="camera_flash_high" type="SpotLight3D" parent="." unique_id=303307689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34130025)
+visible = false
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+distance_fade_begin = 20.0
+distance_fade_length = 5.0
+spot_range = 10.0
+spot_attenuation = -3.0
+
+[node name="camera_flash_low" type="SpotLight3D" parent="camera_flash_high" unique_id=537860334]
+shadow_enabled = true
+distance_fade_begin = 20.0
+distance_fade_length = 5.0
+spot_range = 50.0
+spot_attenuation = 0.0
+spot_angle = 60.0
+
+[node name="picture_radius" type="Area3D" parent="camera_flash_high" unique_id=1509621428]
+collision_layer = 0
+collision_mask = 2
+
+[node name="hitbox" type="CollisionShape3D" parent="camera_flash_high/picture_radius" unique_id=1973422554]
+shape = SubResource("ConvexPolygonShape3D_qq5q4")
+
+[node name="camera_shutter" type="AudioStreamPlayer3D" parent="camera_flash_high" unique_id=1085709742]
+stream = ExtResource("4_hqtel")
+
+[node name="camera_flash" type="AnimationPlayer" parent="." unique_id=1308211792]
+libraries/ = SubResource("AnimationLibrary_sweqy")
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=1663028122]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 2.3841858e-07, -3.7572021)
+size = Vector3(25, 25, 25)
+material = SubResource("FogMaterial_i3pqv")
+
+[node name="camera_cooldown" type="Timer" parent="." unique_id=383216237]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="camera_cooldown" to="." method="_on_camera_cooldown_timeout"]

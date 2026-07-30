@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://buul642tnxctg"]
+
+[ext_resource type="Texture2D" uid="uid://bkfb842w3cccf" path="res://textures/blob.png" id="1_2dbra"]
+
+[sub_resource type="GDScript" id="GDScript_57qmd"]
+resource_name = "blobbingit"
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_2dbra")
+texture_filter = 0
+billboard_mode = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2dbra"]
+load_path = "res://.godot/imported/blob.png-44343b67e4b611ffeabdf9baaa5ec6e6.s3tc.ctex"
+
+[node name="blobfihs" type="Node3D" unique_id=1617518778]
+script = SubResource("GDScript_57qmd")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=244840314]
+material_override = SubResource("StandardMaterial3D_57qmd")
+texture = SubResource("CompressedTexture2D_2dbra")

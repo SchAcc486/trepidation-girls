@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://g246lrrsmd36"]
+
+[ext_resource type="PackedScene" uid="uid://dbrr2qs5u7veo" path="res://UI/static_overlay.tscn" id="1_i7ma2"]
+[ext_resource type="Script" uid="uid://c3p33cau4pa1s" path="res://UI/gameplay_ui.gd" id="1_jmrml"]
+[ext_resource type="PackedScene" uid="uid://cdo84a8j8l2bp" path="res://UI/health.tscn" id="2_jmrml"]
+[ext_resource type="PackedScene" uid="uid://cmtyxvn2wwo64" path="res://UI/sprint.tscn" id="3_jpgws"]
+
+[node name="gameplay" type="CanvasLayer" unique_id=1196021586]
+script = ExtResource("1_jmrml")
+
+[node name="screen" parent="." unique_id=1865631977 instance=ExtResource("1_i7ma2")]
+visible = false
+
+[node name="health" parent="." unique_id=514224882 instance=ExtResource("2_jmrml")]
+
+[node name="sprint" parent="." unique_id=940747815 instance=ExtResource("3_jpgws")]
+
+[node name="fps" type="Label" parent="." unique_id=2089668340]
+offset_top = 156.0
+offset_right = 40.0
+offset_bottom = 179.0
+text = "12345"

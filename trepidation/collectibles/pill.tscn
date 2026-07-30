@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b5wyxrnnsjtik"]
+
+[sub_resource type="GDScript" id="GDScript_1upyl"]
+resource_name = "pill"
+script/source = "extends Area3D
+
+var can_be_picked_up := true;
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node3D) -> void:
+	if can_be_picked_up == true:
+		Globals.player_health += 10;
+		can_be_picked_up = false;
+		hide();
+		$Timer.start();
+
+
+func _on_timer_timeout() -> void:
+	can_be_picked_up = true;
+	show();
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1upyl"]
+
+[sub_resource type="Gradient" id="Gradient_1upyl"]
+offsets = PackedFloat32Array(0, 0.16949153, 0.2542373, 0.3220339, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.42237097, 0.42237106, 0.4223709, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6dkke"]
+gradient = SubResource("Gradient_1upyl")
+fill_from = Vector2(0.43925235, 1)
+fill_to = Vector2(0.45794392, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6g71"]
+albedo_texture = SubResource("GradientTexture2D_6dkke")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6dkke"]
+material = SubResource("StandardMaterial3D_g6g71")
+height = 0.182
+
+[node name="pill" type="Area3D" unique_id=2051008473]
+collision_layer = 16
+collision_mask = 4
+script = SubResource("GDScript_1upyl")
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=1231910157]
+shape = SubResource("BoxShape3D_1upyl")
+
+[node name="texture" type="MeshInstance3D" parent="." unique_id=1696205724]
+mesh = SubResource("CylinderMesh_6dkke")
+
+[node name="Timer" type="Timer" parent="." unique_id=1261665912]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dn2n3d6e3ve2t"]
+
+[ext_resource type="Texture2D" uid="uid://vble124mc80k" path="res://textures/jeffthekiller.jpg" id="1_7k104"]
+[ext_resource type="AudioStream" uid="uid://dn0kcqno81360" path="res://sounds/im-jeff-the-killer.mp3" id="2_4gyqm"]
+
+[sub_resource type="GDScript" id="GDScript_4gyqm"]
+resource_name = "jeffthekillsyou"
+script/source = "extends CharacterBody3D
+
+var speed := 30;
+
+func _on_audio_stream_player_3d_finished() -> void:
+	$\"sound effect\".play();
+
+func _process(delta: float) -> void:
+	look_at_player();
+	var dir := global_position.direction_to(Globals.player_position);
+	dir *= speed;
+	velocity.x = move_toward(velocity.x, dir.x, 60*delta);
+	velocity.z = move_toward(velocity.z, dir.z, 60*delta);
+
+func look_at_player():
+	var diff := Globals.player_position - self.global_position;
+	var target_direction := atan2(diff.x, diff.z);
+	rotation.y = target_direction;
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qi2p4"]
+albedo_texture = ExtResource("1_7k104")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iifgy"]
+material = SubResource("StandardMaterial3D_qi2p4")
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1926018893]
+script = SubResource("GDScript_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=15430563]
+shape = SubResource("CapsuleShape3D_4gyqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=992291659]
+mesh = SubResource("CapsuleMesh_iifgy")
+
+[node name="sound effect" type="AudioStreamPlayer3D" parent="." unique_id=1916721601]
+stream = ExtResource("2_4gyqm")
+autoplay = true
+
+[connection signal="finished" from="sound effect" to="." method="_on_audio_stream_player_3d_finished"]

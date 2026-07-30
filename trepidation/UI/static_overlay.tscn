@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dbrr2qs5u7veo"]
+
+[ext_resource type="Script" uid="uid://caipqxocaxje4" path="res://UI/static_overlay.gd" id="1_gc3pn"]
+
+[sub_resource type="Gradient" id="Gradient_gc3pn"]
+offsets = PackedFloat32Array(0.51875, 0.525)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dmged"]
+noise_type = 0
+frequency = 0.7667
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_32xty"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_dmged")
+color_ramp = SubResource("Gradient_gc3pn")
+normalize = false
+
+[node name="screen" type="CanvasLayer" unique_id=1865631977]
+script = ExtResource("1_gc3pn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=844876261]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_32xty")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=496100995]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ashdsjadhsajdhsadhaskdhasdhsadhasdshad"
