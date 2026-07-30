@@ -1,0 +1,113 @@
+trepidation game planning
+
+MVP:
+
+objective - escape forest
+jeff the killer
+death
+sprint
+health
+spawn in graveyard
+enlarge forest map
+
+assets:
+angel fountain
+trees (small, medium, big) - done
+chainlink fence - collision doesn't work, need to size better
+well
+fallen log - done, collision doesn't work
+stump
+
+evil fog of menace and doom - #280008
+evil ambient lighting of menace and doom - #680012
+nice ambient lighting - 3e0086
+evil lighting of menace and doom - #210000
+160221
+
+camera centered around head
+
+
+disable distance fade camera first person
+
+
+evil ideas:
+footsteps sound that randomly plays (sounds close but far away enough you can't tell. behind player. just absolutely evil lol)
+
+
+slenderman behaviour:
+teleport at certain distance
+after certain teleports starts randomly teleporting
+maybe moves very slowly towards the player
+drains sprint and then health
+makes player look at him - drain
+polaroid camera glitches
+focusing on him causes him to teleport?
+camera shy
+
+
+1/100 chance your flashlight starts flickering after slenderman random teleport is activated - slenderman shows up in the light before disappearing after flashlight dies - unusable for a few seconds.
+
+static overlay only happens when you look mostly at him
+
+
+polaroid first person camera functions:
+zoom in + zoom out
+camera shake
+mouse middle of screen
+
+
+
+game planning stuff idk
+
+medication hint for slender sickness
+
+you can 'disorientate' """wild animals""" in the forest if you use your high beams (flashlight)
+
+momentarily stun for camera.
+
+polaroid can fit 8 film segments at a time
+
+can stack up polaroid film packs but have to reload individual once they get to 0
+
+
+tutorial: camera, flashlight, moving around and player camera movement? shift, crouch.
+
+early objectives: 
+
+[tutorial]
+talk to Jacky
+
+[town]
+talk to mysterious shopkeeper?
+ - mention of hole in chainlink fence/stuff about forest (we don't go there or whatever)
+
+see a townsfolk child (don't find them, implied death) run under the fence? [investigate]
+
+[forest]
+investigate hole in chainlink fence leads to forest, 
+test out camera taking pics of landmarks (notice church/graveyard in distance),
+investigate graveyard (walking through forest) 
+leads to first enemy encounter. (the rake)
+
+
+MVP:
+basic jeff the killer
+basic forest map
+sprint
+health
+tutorial
+
+
+game title ideas:
+
+trepidation
+trepidation girls (but then there's Connie so it kidna doesn't make sense)
+trepidation transgenders
+trepidation transsexuals
+trepidation gir
+
+
+chase themes:
+jeff - lullaby stuff (go to sleep)
+slender - tv static, lots of shifting tones
+rake - monster scream,
