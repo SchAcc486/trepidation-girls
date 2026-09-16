@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmrx6xksc5xcy"
+path="res://.godot/imported/Crouch End 2 - Sound Effect (HD).mp3-0dde25b02075a5b455542566047305fa.mp3str"
+
+[deps]
+
+source_file="res://sounds/Crouch End 2 - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Crouch End 2 - Sound Effect (HD).mp3-0dde25b02075a5b455542566047305fa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

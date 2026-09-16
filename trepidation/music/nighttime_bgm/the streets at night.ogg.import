@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dc8puwidjtl7u"
+path="res://.godot/imported/the streets at night.ogg-a183337d332a7db307c873e278d8e09b.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/nighttime_bgm/the streets at night.ogg"
+dest_files=["res://.godot/imported/the streets at night.ogg-a183337d332a7db307c873e278d8e09b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
