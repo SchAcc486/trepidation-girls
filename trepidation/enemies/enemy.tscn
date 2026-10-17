@@ -18,6 +18,8 @@ rings = 1
 size = Vector3(1, 2, 0.4710083)
 
 [node name="jeff_the_killer" type="CharacterBody3D" unique_id=1926018893]
+collision_layer = 2
+collision_mask = 11
 script = ExtResource("1_orwns")
 
 [node name="hitbox" type="CollisionShape3D" parent="." unique_id=15430563]
@@ -34,12 +36,11 @@ unit_size = 4.0
 [node name="ominous light of doom" type="OmniLight3D" parent="." unique_id=1425354184]
 light_color = Color(1, 0, 0, 1)
 light_energy = 10.0
-light_volumetric_fog_energy = 5.0
 light_specular = 16.0
 shadow_enabled = true
 shadow_normal_bias = 10.0
 shadow_blur = 0.0
-omni_range = 10.0
+omni_range = 50.0
 omni_attenuation = 2.0
 
 [node name="touchregion" type="Area3D" parent="." unique_id=996422107]

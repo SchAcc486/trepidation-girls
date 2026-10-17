@@ -1,21 +1,19 @@
 extends CharacterBody3D
-# green aura and flies
-
-var speed := 15;
+## green aura and flies
+class_name Enemy
+var speed := 9;
 
 func _ready() -> void:
 	trigger_jeff_sfx();
-	velocity.y += 100;
-	pass;
 
 func trigger_jeff_sfx() -> void:
 	await get_tree().create_timer(randf() * 3).timeout;
-	#await $"sound effect".finished;
+	##await $"sound effect".finished;
 	$"sound effect".play();
 	trigger_jeff_sfx();
 
 func _on_audio_stream_player_3d_finished() -> void:
-	#$"sound effect".play();
+	##$"sound effect".play();
 	pass;
 
 func _process(delta: float) -> void:
@@ -29,6 +27,8 @@ func _process(delta: float) -> void:
 	$"sound effect".pitch_scale = 5.0 / (distance + 0.2) + 0.5;
 	if not is_on_floor():
 		velocity += get_gravity() * delta;
+	if (Globals.player_position - self.global_position).length_squared() >= 100.0 and is_on_floor():
+		velocity.y += 10.0;
 
 func look_at_player():
 	var diff := Globals.player_position - self.global_position;
@@ -36,5 +36,6 @@ func look_at_player():
 	rotation.y = target_direction;
 
 
-func _on_touchregion_body_entered(body: Node3D) -> void:
-	Globals.player_health -= 10;
+func _on_touchregion_body_entered(_body: Node3D) -> void:
+	Globals.player_health -= 20;
+	Globals.death_message = "he jeff the killed you!11!1!!"
