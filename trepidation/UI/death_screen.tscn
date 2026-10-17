@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dhpd12opm3naf"]
+
+[ext_resource type="Script" uid="uid://2b6yoo2fj0xx" path="res://UI/death_screen.gd" id="1_n1nej"]
+[ext_resource type="AudioStream" uid="uid://dabsfue88fg7i" path="res://music/bgm/you died.ogg" id="2_n1nej"]
+[ext_resource type="AudioStream" uid="uid://w8o6wm2bq0vb" path="res://sounds/Yodle.ogg" id="3_tawod"]
+
+[sub_resource type="Animation" id="Animation_tawod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/YouDied:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_mh08j"]
+resource_name = "text_display"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/YouDied:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6djrf"]
+_data = {
+&"RESET": SubResource("Animation_tawod"),
+&"text_display": SubResource("Animation_mh08j")
+}
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1364173515]
+process_mode = 3
+layer = 4
+script = ExtResource("1_n1nej")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1751210930]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08066086, 0.020454772, 0.09307074, 1)
+
+[node name="Text" type="Control" parent="." unique_id=1552522047]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YouDied" type="Label" parent="Text" unique_id=247852438]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.0
+offset_top = 81.0
+offset_right = 179.0
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "DEATH BE UPON YE"
+horizontal_alignment = 1
+
+[node name="Button" type="Control" parent="." unique_id=1735383316]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Button" unique_id=1589746102]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -15.5
+offset_right = 27.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1234728, 0.123473175, 0.12347289, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "revive"
+
+[node name="YouDied" type="AudioStreamPlayer" parent="." unique_id=2140497844]
+stream = ExtResource("2_n1nej")
+parameters/looping = true
+
+[node name="Yodle" type="AudioStreamPlayer" parent="." unique_id=1457105630]
+stream = ExtResource("3_tawod")
+pitch_scale = 0.75
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373905890]
+libraries/ = SubResource("AnimationLibrary_6djrf")
+
+[connection signal="pressed" from="Button/Button" to="." method="_on_button_pressed"]

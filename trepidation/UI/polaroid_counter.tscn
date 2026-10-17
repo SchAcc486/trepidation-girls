@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c332ugylxv185"]
+
+[ext_resource type="Script" uid="uid://bv4so2lbxwvxh" path="res://UI/polaroid_counter.gd" id="1_6lfvd"]
+[ext_resource type="Texture2D" uid="uid://b7v4wc5q1gl7q" path="res://assets/polaroid-icon.png" id="1_e37wv"]
+
+[node name="PolaroidCounter" type="CanvasLayer" unique_id=1942602685]
+layer = 4
+script = ExtResource("1_6lfvd")
+
+[node name="Anchor" type="HBoxContainer" parent="." unique_id=1580309461]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -244.5
+offset_top = 9.0
+offset_right = -169.5
+offset_bottom = 49.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="Anchor" unique_id=1973609668]
+layout_mode = 2
+texture = ExtResource("1_e37wv")
+expand_mode = 3
+
+[node name="PolaroidCount" type="Label" parent="Anchor" unique_id=40820356]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8627451, 0.96862745, 1, 1)
+theme_override_font_sizes/font_size = 27
+text = "0"

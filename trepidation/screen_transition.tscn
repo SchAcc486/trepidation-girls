@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://du3dx5pv1o2uj"]
+
+[ext_resource type="Script" uid="uid://d4imk5hfl0lfa" path="res://screen_transition.gd" id="1_7kjox"]
+[ext_resource type="FontFile" uid="uid://k567bjm7if55" path="res://fonts/ROMANTIC.TTF" id="2_tywgj"]
+[ext_resource type="AudioStream" uid="uid://ba14l2lagsar1" path="res://sounds/loading.ogg" id="3_nir2g"]
+[ext_resource type="AudioStream" uid="uid://ct6875ywiblb3" path="res://sounds/finished.ogg" id="4_131ss"]
+
+[sub_resource type="Gradient" id="Gradient_57qmd"]
+colors = PackedColorArray(0.030231662, 0.010188044, 3.008172e-09, 1, 0.7405338, 0.6063624, 0.6457138, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yf5fn"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4v7s"]
+width = 513
+noise = SubResource("FastNoiseLite_yf5fn")
+color_ramp = SubResource("Gradient_57qmd")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_tywgj"]
+offsets = PackedFloat32Array(0.875, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nir2g"]
+noise_type = 0
+frequency = 0.0386
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_131ss"]
+width = 513
+noise = SubResource("FastNoiseLite_nir2g")
+color_ramp = SubResource("Gradient_tywgj")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_nir2g"]
+offsets = PackedFloat32Array(0.875, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_131ss"]
+noise_type = 0
+frequency = 0.0386
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tywgj"]
+width = 513
+noise = SubResource("FastNoiseLite_131ss")
+color_ramp = SubResource("Gradient_nir2g")
+seamless = true
+
+[sub_resource type="Animation" id="Animation_tywgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nir2g"]
+resource_name = "fade"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.2, 2.4, 2.5, 2.6),
+"transitions": PackedFloat32Array(4.594794, 0.87055075, 0.4506252, 1.0352648, 0.81225246, 0.48296815),
+"update": 0,
+"values": [Vector2(0, -650), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_131ss"]
+_data = {
+&"RESET": SubResource("Animation_tywgj"),
+&"fade": SubResource("Animation_nir2g")
+}
+
+[node name="ScreenTransition" type="CanvasLayer" unique_id=1421115791]
+layer = 9
+script = ExtResource("1_7kjox")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1926365337]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_g4v7s")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Shadow" type="Label" parent="Background" unique_id=311791695]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -447.0
+offset_top = -127.5
+offset_right = 461.0
+offset_bottom = 145.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.36431605, 0.20493725, 0.15785542, 0.7411765)
+theme_override_fonts/font = ExtResource("2_tywgj")
+theme_override_font_sizes/font_size = 401
+text = "loading"
+horizontal_alignment = 1
+
+[node name="Loading" type="Label" parent="Background" unique_id=1821042888]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -454.0
+offset_top = -136.5
+offset_right = 454.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.77308255, 0.5517855, 0.41410115, 1)
+theme_override_fonts/font = ExtResource("2_tywgj")
+theme_override_font_sizes/font_size = 400
+text = "loading"
+horizontal_alignment = 1
+
+[node name="Overlay" type="TextureRect" parent="Background" unique_id=912170384]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_131ss")
+stretch_mode = 1
+
+[node name="DarkOverlay" type="TextureRect" parent="Background" unique_id=132140873]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_tywgj")
+stretch_mode = 1
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1824342325]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_131ss")
+
+[node name="SFX" type="Node" parent="." unique_id=1328238714]
+
+[node name="Loading" type="AudioStreamPlayer" parent="SFX" unique_id=83172394]
+stream = ExtResource("3_nir2g")
+volume_db = -10.0
+
+[node name="Finished" type="AudioStreamPlayer" parent="SFX" unique_id=959863822]
+stream = ExtResource("4_131ss")

@@ -111,3 +111,66 @@ chase themes:
 jeff - lullaby stuff (go to sleep)
 slender - tv static, lots of shifting tones
 rake - monster scream,
+
+starting warning:
+actions displayed in this game are not recommended to act out for some of them are harmful.
+
+
+shop stuff:
+healing pills are estrogen pills
+compass
+shitty tracking device (wait but it works on other enemies lol) - disadvantage: slenderman
+
+
+raycast travels furthest slenderman goes there in field of view, far away corner of vision or straight ahead.
+rage mode camera stops working, no overlay or taking pictures
+taking slenderman pic at daytime leads to 'you feel violently ill' 
+
+compass overlay UI (since slenderman messes with electronics)
+three item storage? or just regular backpack UI... hotbar?
+
+(NPC dialogue hints on selling photos)
+"You'd be surprised, there's quite a market for that sorta thing."
+"Sure, this town is known to have all kinds of weird things going on..."
+"But no one's been brave or crazy enough to actually get any solid proof of those... things"
+"Or if they did, they were never heard of again."
+"But hey, if you're selling, I'm buying."
+Connie explaining? Or someone else... (Maybe sell to Connie so he can make more money outside of his shitty job)
+
+(Willow thoughts?)
+"Well, if this isn't the definition of a fresh start"
+"I wake up today feeling slightly hopeful about the situation"
+"The good thing about being stuck in a place like this is... a chance for a fresh start, I guess."
+"I've always been drawn to strange creatures and urban legends. They've helped me feel a little less lonely, a kinship of the misunderstood if you will."
+"It's hard to say the last time I was able to make a decision for myself but this... feels like a good place to start."
+"I think there's something sorta magical about the way people use photos to capture a moment in time. It's like an immortalisation of a moment. Maybe that's what swayed me to pick up this camera.
+"Is it weird to say I don't believe in fate?"
+"Maybe this is a little strange, but honestly there's something weirdly exhilarating about being in danger. Having your life on the line is... Well, just the thought gives me the shivers ."
+"Sometimes I wonder if I'll ever really be, well, me. I mean, it's one thing to look a certain way but... I don't know if it's the same as being who I am on the inside."
+"At least in a town like this, I can leave the past behind."
+"God, just thinking of that... thing. It makes me ill."
+
+Willow's way of saying things changes after meeting Jacky - from eloquent to a bit freer (maybe swears or something sometimes, uses sayings and slang)
+
+
+polaroid overlay
+darker + most saturated
+only see what's going to me in pic
+slightly obstructed view
+
+
+items:
+dowsing rod :D
+pocket watch compass
+high tech detecting thing radar
+
+different slots for types of items (carriable 3 slot or 5 slot system, equippable single slot but rotate like a gun system (radar, camera, basically first person stuff overlay stuff), inventory for general stuff?
+
+hotbar:
+5 hotbar slot
+3 shown
+2 on sides r opaque
+can rotate through
+
+compass directs you to objectives
+dowsing rods interact with respawn points/save and load points

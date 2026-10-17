@@ -50,6 +50,7 @@ var base_fov := 70.0;
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS;
  
+## changes fov depending on sprint and external circumstances
 func update_fov(delta, camera) -> void:
 	if not camera:
 		return;
@@ -71,11 +72,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("first_person"):
 		first_person = !first_person;
 		var big_tree := preload("res://mesh_libraries/big_tree_material.tres");
-		big_tree.distance_fade_mode = 1 - big_tree.distance_fade_mode;
+		big_tree.distance_fade_mode = (1 - big_tree.distance_fade_mode) as StandardMaterial3D.DistanceFadeMode;
 	if not get_camera():
 		return;
 	get_camera().attributes.exposure_multiplier = Globals.gamma;
 
+## how the camera moves
 func update_camera(delta: float) -> void:
 	var camera := get_camera();
 	if not camera:
@@ -90,7 +92,7 @@ func update_camera(delta: float) -> void:
 		if Player.crouching:
 			camera.position = Vector3(0.0, 0.5, 0.0);
 		else:
-			camera.position = Vector3(0.0, 1.0, 0.0);
+			camera.position = Vector3(0.0, 0.7, 0.0);
 	else:
 		move_speed = 2.0;
 		camera.position = lerp(camera.position, target_pos, 1.0);
@@ -98,7 +100,7 @@ func update_camera(delta: float) -> void:
 
 func get_camera() -> Camera3D:
 	return get_viewport().get_camera_3d();
-	
+
 func get_camera_direction(deg := false) -> Vector3:
 	if get_camera():
 		if deg:
@@ -108,25 +110,28 @@ func get_camera_direction(deg := false) -> Vector3:
 	else:
 		return Vector3.ZERO;
 
-func get_camera_movement(delta):
-	if first_person and fmod(internal_timer, 0.1) <= delta * 1:
-		return;
+## basically makes the arrows move the camera around instead of the player if you're in camera mode
+func get_camera_movement(_delta):
+	if first_person:
+		var move := Input.get_vector("camera_right", "camera_left", "backwards_arrow", "forwards_arrow");
+		move *= control_sensitivity * move_speed;
+		camera_move.x += move.x;
+		camera_move.y += move.y;
+		max_pitch = PI / 4;
 	else:
 		var move := Input.get_axis("camera_right", "camera_left");
 		move *= control_sensitivity * move_speed;
-		camera_move.x += move * delta * 45;
-	if first_person:
-		var move := Input.get_axis("backwards_arrow", "forwards_arrow");
-		camera_move.y += move * control_sensitivity * move_speed * delta * 45;
-		max_pitch = PI / 4;
-	else:
+		camera_move.x += move;
 		max_pitch = PI / 2;
 
+## this lets you use the right mouse button to drag the camera angle around
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.is_action_pressed("camera_drag"):
+	if event is InputEventMouseMotion and Input.is_action_pressed("camera_drag") and not first_person:
 		camera_move.x += -event.relative.x * mouse_sensitivity;
 		camera_move.y += -event.relative.y * mouse_sensitivity;
-	
+
+
+## this lets you zoom in and out (in third person and first person)
 func beabadoobee(delta):
 	get_camera_movement(delta);
 	update_camera(delta);

@@ -4,31 +4,57 @@
 [ext_resource type="AudioStream" uid="uid://cod6lwyo4frcd" path="res://sounds/flashlight.ogg" id="2_i3pqv"]
 [ext_resource type="AudioStream" uid="uid://nce42pe4lxvt" path="res://sounds/footsteps-on-grass.mp3" id="2_onrkg"]
 [ext_resource type="AudioStream" uid="uid://bn47ufpp0gxer" path="res://sounds/camera-shutter-sfx.ogg" id="4_hqtel"]
+[ext_resource type="AudioStream" uid="uid://1ngrf22ysywa" path="res://sounds/camera-fail-sfx.ogg" id="4_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://bohmj1ern16gi" path="res://sounds/equip.ogg" id="5_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://b78ggbrupa161" path="res://sounds/put_away.ogg" id="6_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://dmrx6xksc5xcy" path="res://sounds/Crouch End 2 - Sound Effect (HD).mp3" id="8_b26j0"]
+[ext_resource type="AudioStream" uid="uid://d44l8kmsjohw" path="res://sounds/Continuous Mechanical Whir SOUND Effect.ogg" id="8_dw050"]
+[ext_resource type="AudioStream" uid="uid://xjkdimb0m25y" path="res://sounds/electrical_hum.ogg" id="9_b26j0"]
+[ext_resource type="Texture2D" uid="uid://x6drwab28n10" path="res://animations/walkleft-placeholder.png" id="11_urp6f"]
+[ext_resource type="Texture2D" uid="uid://fsyvxgnae0uh" path="res://animations/walkstand-placeholder.png" id="12_bwjto"]
+[ext_resource type="Texture2D" uid="uid://b3b3bsdf4qwo6" path="res://animations/walkright-placeholder.png" id="13_606se"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_bwjto")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_urp6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bwjto")
+}],
+"loop": 1,
+"name": &"walkcycle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
-[sub_resource type="Gradient" id="Gradient_i3pqv"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
-gradient = SubResource("Gradient_i3pqv")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0xbq"]
-albedo_texture = SubResource("GradientTexture2D_i3pqv")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
-material = SubResource("StandardMaterial3D_u0xbq")
-radial_segments = 6
-rings = 1
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yf5fn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qq5q4"]
-points = PackedVector3Array(0, 0, 0, -40, -40, -40, 40, -40, -40, 40, 40, -40, -40, 40, -40)
+points = PackedVector3Array(0, 0, 0, -50, -50, -50, 50, -50, -50, 50, 50, -50, -50, 50, -50)
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("camera_flash_high/camera_flash_low:light_energy")
+tracks/0/path = NodePath("CameraFlashHigh/CameraFlash:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("camera_flash_high:light_energy")
+tracks/1/path = NodePath("CameraFlashHigh:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,7 +78,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("camera_flash_high:visible")
+tracks/2/path = NodePath("CameraFlashHigh:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -68,7 +94,7 @@ length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("camera_flash_high/camera_flash_low:light_energy")
+tracks/0/path = NodePath("CameraFlashHigh/CameraFlash:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +106,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("camera_flash_high:light_energy")
+tracks/1/path = NodePath("CameraFlashHigh:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,7 +118,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("camera_flash_high:visible")
+tracks/2/path = NodePath("CameraFlashHigh:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -111,26 +137,62 @@ _data = {
 [sub_resource type="FogMaterial" id="FogMaterial_i3pqv"]
 density = 0.03
 
-[node name="willow" type="CharacterBody3D" unique_id=538516045]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw050"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b26j0"]
+next_pass = SubResource("StandardMaterial3D_dw050")
+emission_enabled = true
+emission = Color(0.83983, 0.8712826, 0, 1)
+emission_energy_multiplier = 10.0
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g4v7s"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.5
+
+[node name="Willow" type="CharacterBody3D" unique_id=538516045]
+collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_4flbx")
 
-[node name="hitbox" type="CollisionShape3D" parent="." unique_id=876665192]
+[node name="Animation" type="AnimatedSprite3D" parent="." unique_id=1700783130]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.19046384, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
+
+[node name="Hitbox" type="CollisionShape3D" parent="." unique_id=876665192]
 shape = SubResource("CapsuleShape3D_sh265")
 
-[node name="texture" type="MeshInstance3D" parent="." unique_id=447638142]
-mesh = SubResource("CapsuleMesh_4flbx")
+[node name="Texture" type="MeshInstance3D" parent="." unique_id=447638142]
+visible = false
+mesh = SubResource("CapsuleMesh_yf5fn")
 
-[node name="cameracast" type="RayCast3D" parent="." unique_id=1167145077]
+[node name="CameraCast" type="RayCast3D" parent="." unique_id=1167145077]
 enabled = false
 
-[node name="flashlight" type="Node3D" parent="." unique_id=469953773]
+[node name="Flashlight" type="Node3D" parent="." unique_id=469953773]
 visible = false
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="just_light" type="SpotLight3D" parent="flashlight" unique_id=1730973042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40987742, 0)
-light_color = Color(0.9289869, 1, 0.8601269, 1)
+[node name="JustLight" type="SpotLight3D" parent="Flashlight" unique_id=1730973042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42929417, 0)
+light_color = Color(0.9052624, 0.99999994, 0.92732805, 1)
 light_energy = 3.0
-light_volumetric_fog_energy = 3.0
+light_volumetric_fog_energy = 2.0
 light_bake_mode = 1
 shadow_enabled = true
 shadow_blur = 0.0
@@ -138,17 +200,12 @@ spot_range = 50.0
 spot_attenuation = 0.6
 spot_angle = 25.0
 
-[node name="click" type="AudioStreamPlayer3D" parent="flashlight" unique_id=1198870945]
+[node name="Click" type="AudioStreamPlayer3D" parent="Flashlight" unique_id=1198870945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40987742, 0)
 stream = ExtResource("2_i3pqv")
 volume_db = -5.0
 
-[node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1344151519]
-stream = ExtResource("2_onrkg")
-autoplay = true
-parameters/looping = true
-
-[node name="camera_flash_high" type="SpotLight3D" parent="." unique_id=303307689]
+[node name="CameraFlashHigh" type="SpotLight3D" parent="." unique_id=303307689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34130025)
 visible = false
 light_volumetric_fog_energy = 0.0
@@ -157,8 +214,10 @@ distance_fade_begin = 20.0
 distance_fade_length = 5.0
 spot_range = 10.0
 spot_attenuation = -3.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="camera_flash_low" type="SpotLight3D" parent="camera_flash_high" unique_id=537860334]
+[node name="CameraFlash" type="SpotLight3D" parent="CameraFlashHigh" unique_id=537860334]
 shadow_enabled = true
 distance_fade_begin = 20.0
 distance_fade_length = 5.0
@@ -166,17 +225,20 @@ spot_range = 50.0
 spot_attenuation = 0.0
 spot_angle = 60.0
 
-[node name="picture_radius" type="Area3D" parent="camera_flash_high" unique_id=1509621428]
+[node name="PictureRadius" type="Area3D" parent="CameraFlashHigh" unique_id=1509621428]
 collision_layer = 0
 collision_mask = 2
 
-[node name="hitbox" type="CollisionShape3D" parent="camera_flash_high/picture_radius" unique_id=1973422554]
+[node name="Hitbox" type="CollisionShape3D" parent="CameraFlashHigh/PictureRadius" unique_id=1973422554]
 shape = SubResource("ConvexPolygonShape3D_qq5q4")
 
-[node name="camera_shutter" type="AudioStreamPlayer3D" parent="camera_flash_high" unique_id=1085709742]
+[node name="CameraShutter" type="AudioStreamPlayer3D" parent="CameraFlashHigh" unique_id=1085709742]
 stream = ExtResource("4_hqtel")
 
-[node name="camera_flash" type="AnimationPlayer" parent="." unique_id=1308211792]
+[node name="CameraFail" type="AudioStreamPlayer3D" parent="CameraFlashHigh" unique_id=1537571890]
+stream = ExtResource("4_n7ghd")
+
+[node name="CameraFlash" type="AnimationPlayer" parent="." unique_id=1308211792]
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=1663028122]
@@ -184,8 +246,83 @@ transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, 
 size = Vector3(25, 25, 25)
 material = SubResource("FogMaterial_i3pqv")
 
-[node name="camera_cooldown" type="Timer" parent="." unique_id=383216237]
+[node name="CameraCooldown" type="Timer" parent="." unique_id=383216237]
 wait_time = 0.8
 one_shot = true
 
-[connection signal="timeout" from="camera_cooldown" to="." method="_on_camera_cooldown_timeout"]
+[node name="SFX" type="Node3D" parent="." unique_id=819260730]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="SFX" unique_id=1344151519]
+stream = ExtResource("2_onrkg")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="EquipCamera" type="AudioStreamPlayer3D" parent="SFX" unique_id=1845548876]
+stream = ExtResource("5_2hs0m")
+unit_size = 1.0
+
+[node name="UnequipCamera" type="AudioStreamPlayer3D" parent="SFX" unique_id=1469500241]
+stream = ExtResource("6_2hs0m")
+unit_size = 1.0
+
+[node name="CrouchEnd" type="AudioStreamPlayer3D" parent="SFX" unique_id=1322825851]
+stream = ExtResource("8_b26j0")
+volume_db = -10.0
+
+[node name="CameraWhir" type="AudioStreamPlayer3D" parent="SFX" unique_id=707545376]
+stream = ExtResource("8_dw050")
+volume_db = -80.0
+pitch_scale = 1.8
+autoplay = true
+parameters/looping = true
+
+[node name="DowsingRodHum" type="AudioStreamPlayer3D" parent="SFX" unique_id=1115627950]
+stream = ExtResource("9_b26j0")
+volume_db = -80.0
+unit_size = 0.1
+autoplay = true
+parameters/looping = true
+
+[node name="ThingInPic" type="RayCast3D" parent="." unique_id=1734813273]
+collision_mask = 10
+debug_shape_custom_color = Color(0, 1, 1, 1)
+debug_shape_thickness = 5
+
+[node name="Items" type="Node3D" parent="." unique_id=1891630006]
+
+[node name="DowsingRod" type="Node3D" parent="Items" unique_id=1765614116]
+visible = false
+
+[node name="RodLeftPivot" type="Node3D" parent="Items/DowsingRod" unique_id=623395346]
+transform = Transform3D(0.90630776, -0.42261827, -1.8473232e-08, 0, -4.371139e-08, 1, -0.42261827, -0.90630776, -3.961597e-08, -0.5, 0, -0.3)
+
+[node name="RodLeft" type="MeshInstance3D" parent="Items/DowsingRod/RodLeftPivot" unique_id=727714207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+material_overlay = SubResource("StandardMaterial3D_b26j0")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_g4v7s")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Items/DowsingRod/RodLeftPivot/RodLeft" unique_id=699436475]
+light_color = Color(0.9720208, 1, 0.55388856, 1)
+light_energy = 0.1
+omni_range = 2.0
+
+[node name="RodRightPivot" type="Node3D" parent="Items/DowsingRod" unique_id=441343186]
+transform = Transform3D(0.90630776, 0.42261827, 1.8473232e-08, 0, -4.371139e-08, 1, 0.42261827, -0.90630776, -3.961597e-08, 0.5, 0, -0.3)
+
+[node name="RodRight" type="MeshInstance3D" parent="Items/DowsingRod/RodRightPivot" unique_id=1830948683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+material_overlay = SubResource("StandardMaterial3D_b26j0")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_g4v7s")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Items/DowsingRod/RodRightPivot/RodRight" unique_id=678096087]
+light_color = Color(0.9720208, 1, 0.55388856, 1)
+light_energy = 0.1
+omni_range = 2.0
+omni_shadow_mode = 0
+
+[connection signal="timeout" from="CameraCooldown" to="." method="_on_camera_cooldown_timeout"]

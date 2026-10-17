@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bfo1t17p528vm"]
+
+[ext_resource type="Script" uid="uid://5tsgvl68alu7" path="res://UI/hotbar.gd" id="1_721nr"]
+
+[node name="Hotbar" type="CanvasLayer" unique_id=1926601190]
+script = ExtResource("1_721nr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1010048505]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -52.0
+offset_right = 20.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0

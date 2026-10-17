@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://citpd3k0ma2oi"]
+
+[ext_resource type="Script" uid="uid://cfchbkw88lc75" path="res://UI/objective.gd" id="1_uxv1v"]
+[ext_resource type="FontFile" uid="uid://k567bjm7if55" path="res://fonts/ROMANTIC.TTF" id="2_c1u2e"]
+[ext_resource type="AudioStream" uid="uid://2b0g5jcgeixl" path="res://sounds/NostalgiaCancer10.ogg" id="3_w6h6x"]
+
+[node name="Objective" type="CanvasLayer" unique_id=341281248]
+layer = 5
+script = ExtResource("1_uxv1v")
+
+[node name="Anchor" type="Control" parent="." unique_id=688300363]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ObjectiveTextShadow" type="Label" parent="Anchor" unique_id=119094671]
+modulate = Color(0.05100786, 0.05100786, 0.05100786, 0.47400004)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 63.0
+offset_right = 246.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_c1u2e")
+theme_override_font_sizes/font_size = 60
+text = "objective: get jiggy with it"
+horizontal_alignment = 1
+
+[node name="ObjectiveText" type="Label" parent="Anchor" unique_id=31850810]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.5
+offset_top = 61.0
+offset_right = 183.5
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_c1u2e")
+theme_override_font_sizes/font_size = 60
+text = "objective: get jiggy with it"
+horizontal_alignment = 1
+
+[node name="HoverDetect" type="Control" parent="Anchor/ObjectiveText" unique_id=1216301614]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.75677
+offset_top = -26.0
+offset_right = 170.75677
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+
+[node name="SFX" type="Node" parent="." unique_id=1145500181]
+
+[node name="ObjectiveJingle" type="AudioStreamPlayer" parent="SFX" unique_id=717572722]
+stream = ExtResource("3_w6h6x")
+volume_db = -10.0
+
+[connection signal="mouse_entered" from="Anchor/ObjectiveText/HoverDetect" to="." method="_on_hover_detect_mouse_entered"]
+[connection signal="mouse_exited" from="Anchor/ObjectiveText/HoverDetect" to="." method="_on_hover_detect_mouse_exited"]

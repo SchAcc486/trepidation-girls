@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://6p5a6sqqdj7g"]
+
+[ext_resource type="Script" uid="uid://bqauoqacgxpna" path="res://UI/hurt_overlay.gd" id="1_ka2ts"]
+[ext_resource type="Texture2D" uid="uid://crglnxffrhqxr" path="res://UI/bramble_overlay-1.png.png" id="1_p4dpk"]
+[ext_resource type="Texture2D" uid="uid://xt24ql1cmj5b" path="res://UI/bramble_overlay-3.png.png" id="3_rta44"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g4v7s"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_g4v7s"]
+frames = 2
+frame_0/texture = ExtResource("1_p4dpk")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_rta44")
+frame_1/duration = 0.5
+
+[sub_resource type="Gradient" id="Gradient_vxl32"]
+offsets = PackedFloat32Array(0.56875, 0.9)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_vxl32")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="HurtOverlay" type="CanvasLayer" unique_id=890533396]
+script = ExtResource("1_ka2ts")
+
+[node name="Ouch" type="TextureRect" parent="." unique_id=804759135]
+modulate = Color(0.37187055, 0.086104214, 0.106126174, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_g4v7s")
+
+[node name="Brambles" type="TextureRect" parent="." unique_id=295562568]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("AnimatedTexture_g4v7s")
+
+[node name="Vignette" type="TextureRect" parent="." unique_id=1371560955]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_g4v7s")
+expand_mode = 1

@@ -15,7 +15,7 @@ noise = SubResource("FastNoiseLite_dmged")
 color_ramp = SubResource("Gradient_gc3pn")
 normalize = false
 
-[node name="screen" type="CanvasLayer" unique_id=1865631977]
+[node name="Screen" type="CanvasLayer" unique_id=1865631977]
 script = ExtResource("1_gc3pn")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=844876261]
@@ -27,7 +27,8 @@ grow_vertical = 2
 texture = SubResource("NoiseTexture2D_32xty")
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=496100995]
+[node name="DistanceToSlendy" type="Label" parent="." unique_id=496100995]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "ashdsjadhsajdhsadhaskdhasdhsadhasdshad"

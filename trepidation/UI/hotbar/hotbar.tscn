@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bl8es8d3j80n1"]
+
+[node name="Hotbar" type="CanvasLayer" unique_id=1926601190]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1010048505]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0

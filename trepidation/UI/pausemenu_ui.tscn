@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bgdivemaq2jpe"]
 
 [ext_resource type="Script" uid="uid://cpdy3eua5iabr" path="res://UI/pausemenu.gd" id="1_cph68"]
+[ext_resource type="AudioStream" uid="uid://ctqggr6plormo" path="res://sounds/Button.ogg" id="2_31hj5"]
+[ext_resource type="FontFile" uid="uid://k567bjm7if55" path="res://fonts/ROMANTIC.TTF" id="2_rnpvy"]
+[ext_resource type="AudioStream" uid="uid://dpxor4rbrlqwh" path="res://music/bgm/pausemusic.ogg" id="4_q800t"]
 
 [sub_resource type="Gradient" id="Gradient_n67t0"]
 offsets = PackedFloat32Array(0.0125, 1)
@@ -23,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("background:scale")
+tracks/0/path = NodePath("Background:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("background:modulate")
+tracks/1/path = NodePath("Background:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,7 +55,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("background:scale")
+tracks/0/path = NodePath("Background:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("background:modulate")
+tracks/1/path = NodePath("Background:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,12 +83,12 @@ _data = {
 &"flesh": SubResource("Animation_cph68")
 }
 
-[node name="pausemenu" type="CanvasLayer" unique_id=1796768069]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1796768069]
 process_mode = 3
-layer = 4
+layer = 10
 script = ExtResource("1_cph68")
 
-[node name="background" type="TextureRect" parent="." unique_id=289099650]
+[node name="Background" type="TextureRect" parent="." unique_id=289099650]
 modulate = Color(0.93333334, 0.93333334, 0.93333334, 0.5019608)
 z_index = -2
 anchors_preset = 15
@@ -99,7 +102,7 @@ size_flags_vertical = 4
 texture = SubResource("NoiseTexture2D_g4v7s")
 stretch_mode = 1
 
-[node name="pause" type="Control" parent="." unique_id=302051098]
+[node name="Pause" type="Control" parent="." unique_id=302051098]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +110,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Label" parent="pause" unique_id=1849286390]
+[node name="Title" type="Label" parent="Pause" unique_id=1849286390]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -116,10 +119,12 @@ offset_left = -140.99976
 offset_right = 141.00171
 offset_bottom = 110.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
 theme_override_font_sizes/font_size = 100
 text = "paused"
+horizontal_alignment = 1
 
-[node name="bars" type="Control" parent="." unique_id=241599814]
+[node name="Bars" type="Control" parent="." unique_id=241599814]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="settings" type="Button" parent="bars" unique_id=248511483]
+[node name="Settings" type="Button" parent="Bars" unique_id=248511483]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,16 +140,71 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -99.0
-offset_top = 29.0
+offset_top = 124.0
 offset_right = 99.0
-offset_bottom = 106.0
+offset_bottom = 201.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
 theme_override_font_sizes/font_size = 50
 text = "settings
 "
 
-[node name="resume" type="Button" parent="bars" unique_id=1057224771]
+[node name="Controls" type="Button" parent="Bars" unique_id=708547644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 19.0
+offset_right = 99.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
+theme_override_font_sizes/font_size = 50
+text = "controls
+"
+
+[node name="About" type="Button" parent="Bars" unique_id=1677934190]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -93.0
+offset_right = 99.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
+theme_override_font_sizes/font_size = 50
+text = "about
+"
+
+[node name="Title" type="Button" parent="Bars" unique_id=1853431322]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 237.0
+offset_right = 99.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
+theme_override_font_sizes/font_size = 50
+text = "title
+"
+
+[node name="Resume" type="Button" parent="Bars" unique_id=1057224771]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,10 +212,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.0
-offset_top = -77.0
+offset_top = -199.0
 offset_right = 96.0
+offset_bottom = -122.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rnpvy")
 theme_override_font_sizes/font_size = 50
 text = "resume
 "
@@ -165,5 +227,18 @@ process_mode = 2
 libraries/ = SubResource("AnimationLibrary_31hj5")
 autoplay = &"flesh"
 
-[connection signal="pressed" from="bars/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="bars/resume" to="." method="_on_resume_pressed"]
+[node name="SFX" type="Node" parent="." unique_id=429118804]
+
+[node name="Button" type="AudioStreamPlayer" parent="SFX" unique_id=375196786]
+stream = ExtResource("2_31hj5")
+
+[node name="Pausemusic" type="AudioStreamPlayer" parent="SFX" unique_id=1415137760]
+stream = ExtResource("4_q800t")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="Bars/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Bars/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Bars/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="Bars/Title" to="." method="_on_title_pressed"]
+[connection signal="pressed" from="Bars/Resume" to="." method="_on_resume_pressed"]

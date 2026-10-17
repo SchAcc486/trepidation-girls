@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Globals.game_paused:
 		return;
-	$health_bar.value = move_toward($health_bar.value, Globals.player_health, delta * 75);
+	$HealthBar.value = move_toward($HealthBar.value, Globals.player_health, delta * 75);
 "
 
 [sub_resource type="Gradient" id="Gradient_6mtgg"]
@@ -39,14 +39,15 @@ height = 50
 noise = SubResource("FastNoiseLite_1ybo6")
 color_ramp = SubResource("Gradient_g63s6")
 
-[node name="health" type="CanvasLayer" unique_id=514224882]
+[node name="Health" type="CanvasLayer" unique_id=514224882]
 script = SubResource("GDScript_6mtgg")
 
-[node name="health_bar" type="TextureProgressBar" parent="." unique_id=743335105]
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=743335105]
 offset_left = 35.0
 offset_top = 31.0
 offset_right = 435.0
 offset_bottom = 81.0
+step = 0.0
 value = 100.0
 texture_under = SubResource("NoiseTexture2D_ru2go")
 texture_progress = SubResource("NoiseTexture2D_wwkc3")

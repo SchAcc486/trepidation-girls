@@ -1,0 +1,22 @@
+controls
+
+WASD - movement
+
+arrow keys - (left + right look around), (up + down move forwards backwards)
+in camera mode, all arrow keys just look around
+
+q - over shoulder camera
+
+c - equip camera
+
+r - take picture (requires camera)
+you can't take a picture with the flashlight on
+
+f - flashlight
+
+ctrl - crouch
+
+shift - sprint
+
+right drag - look around
+disabled in camera mode

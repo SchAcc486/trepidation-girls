@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://bkr1rma67518p"]
+
+[ext_resource type="Script" uid="uid://upcrwophke6a" path="res://UI/controls_ui.gd" id="1_miwdl"]
+[ext_resource type="FontFile" uid="uid://k567bjm7if55" path="res://fonts/ROMANTIC.TTF" id="1_xq7c5"]
+[ext_resource type="AudioStream" uid="uid://ctqggr6plormo" path="res://sounds/Button.ogg" id="3_4sn6q"]
+
+[sub_resource type="Gradient" id="Gradient_n67t0"]
+offsets = PackedFloat32Array(0.0125, 1)
+colors = PackedColorArray(0.7197523, 0.102965586, 0.33834365, 1, 0.36255014, 0, 0.01614984, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cph68"]
+noise_type = 0
+frequency = 0.013
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4v7s"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_cph68")
+color_ramp = SubResource("Gradient_n67t0")
+seamless = true
+normalize = false
+seamless_blend_skirt = 1.0
+
+[sub_resource type="Animation" id="Animation_xirri"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_clfvg"]
+resource_name = "flesh"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(0.6, 0.6, 0.6830202),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(6, -0.6, 1),
+"update": 0,
+"values": [Color(0.9333369, 0.9333369, 0.9333369, 0.5), Color(2.569, 0, 0.631, 0.251), Color(0.9333369, 0.9333369, 0.9333369, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sn6q"]
+_data = {
+&"RESET": SubResource("Animation_xirri"),
+&"flesh": SubResource("Animation_clfvg")
+}
+
+[node name="Controls" type="CanvasLayer" unique_id=416638516]
+process_mode = 3
+layer = 10
+script = ExtResource("1_miwdl")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1694507696]
+modulate = Color(0.9333369, 0.9333369, 0.9333369, 0.5)
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("NoiseTexture2D_g4v7s")
+stretch_mode = 1
+
+[node name="Anchor" type="Control" parent="." unique_id=631359383]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsLeft" type="Label" parent="Anchor" unique_id=1068923000]
+layout_mode = 0
+offset_left = -525.0
+offset_top = -252.0
+offset_right = 31.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("1_xq7c5")
+theme_override_font_sizes/font_size = 40
+text = "W  -   m o v e   f o r w a r d 
+A  -   m o v e   l e f t
+S  -   m o v e   b a c k w a r d s
+D   -   m o v e   r i g h t
+ARROW KEYS   -   m o v e   c a m e r a   
+i n   f i r s t   p e r s o n
+SHIFT   -   s p r i n t
+CTRL   -   c r o u c h"
+
+[node name="ControlsRight" type="Label" parent="Anchor" unique_id=1518446520]
+layout_mode = 0
+offset_left = 133.0
+offset_top = -252.0
+offset_right = 567.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("1_xq7c5")
+theme_override_font_sizes/font_size = 40
+text = "C   -   c a m e r a   m o d e
+F   -   t o g g l e   f l a s h l i g h t
+R   -   t a k e   p i c t u r e
+Q   -   o v e r   s h o u l d e r   
+c a m e r a
+E   -   i n t e r a c t
+RIGHT MOUSE   -   c a m e r a   
+d r a g
+MINUS   -   z o o m   o u t
+PLUS   -   z o o m   i n "
+
+[node name="Back" type="Button" parent="." unique_id=1025048559]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -90.0
+offset_right = 147.0
+offset_bottom = -13.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_xq7c5")
+theme_override_font_sizes/font_size = 50
+text = "back "
+
+[node name="SFX" type="Node" parent="." unique_id=28340497]
+
+[node name="Button" type="AudioStreamPlayer" parent="SFX" unique_id=1407422805]
+stream = ExtResource("3_4sn6q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=529872792]
+process_mode = 2
+libraries/ = SubResource("AnimationLibrary_4sn6q")
+autoplay = &"flesh"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

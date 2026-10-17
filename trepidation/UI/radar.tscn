@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dxe3ei5jdaifx"]
+
+[ext_resource type="Script" uid="uid://biasp2og7wutb" path="res://UI/radar.gd" id="1_yeln5"]
+[ext_resource type="AudioStream" uid="uid://btlol22pmkath" path="res://sounds/Button2.ogg" id="2_rarhi"]
+
+[sub_resource type="Gradient" id="Gradient_rarhi"]
+offsets = PackedFloat32Array(0.05, 0.11875, 0.16875, 0.3, 0.3875, 0.4428858, 0.48897797, 0.49499)
+colors = PackedColorArray(0, 0, 0, 1, 1.6123802e-06, 0.5498888, 9.62615e-07, 1, 0, 0, 0, 1, 0, 0.51606184, 9.62615e-07, 1, 0, 0, 0, 1, 0, 0.4946968, 8.663535e-07, 1, 0, 0, 0, 0.54838717, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d0u6y"]
+gradient = SubResource("Gradient_rarhi")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_l6m7y"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_l6m7y")
+width = 1
+height = 1
+fill_from = Vector2(0.49609375, 0)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_yeln5"]
+offsets = PackedFloat32Array(0.025, 0.5625)
+colors = PackedColorArray(0, 1, 0, 0.5, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57qmd"]
+gradient = SubResource("Gradient_yeln5")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.3203125)
+
+[sub_resource type="Gradient" id="Gradient_xva2x"]
+offsets = PackedFloat32Array(0.14375, 0.19375, 0.25625)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0.51606184, 1.4439225e-06, 1, 1.0829419e-07, 0.43734035, 6.738305e-07, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_xva2x")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_eg5pf"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcnqv"]
+gradient = SubResource("Gradient_eg5pf")
+
+[node name="Radar" type="Control" unique_id=620876429]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yeln5")
+
+[node name="Circle" type="TextureRect" parent="." unique_id=731373375]
+texture_filter = 1
+layout_mode = 0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+texture = SubResource("GradientTexture2D_d0u6y")
+
+[node name="Bar" type="ColorRect" parent="Circle" unique_id=914065889]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 63.0
+offset_right = 252.0
+offset_bottom = 437.0
+color = Color(4.3317675e-07, 0.58714205, 0, 1)
+
+[node name="Bar2" type="ColorRect" parent="Circle" unique_id=1088594713]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 248.0
+offset_right = 441.0
+offset_bottom = 622.0
+rotation = 1.5707964
+color = Color(4.3317675e-07, 0.58714205, 0, 1)
+
+[node name="RadarBar" type="TextureRect" parent="Circle" unique_id=2077336554]
+texture_filter = 1
+layout_mode = 0
+offset_left = 246.0
+offset_top = 250.0
+offset_right = 254.0
+offset_bottom = 423.0
+pivot_offset = Vector2(4, 0)
+texture = SubResource("GradientTexture2D_yf5fn")
+expand_mode = 1
+
+[node name="RadarTrail" type="TextureRect" parent="Circle/RadarBar" unique_id=882365985]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_right = 127.0
+offset_bottom = 173.0
+texture = SubResource("GradientTexture2D_57qmd")
+
+[node name="Dot" type="TextureRect" parent="." unique_id=529643011]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_g4v7s")
+
+[node name="Dots" type="Control" parent="." unique_id=1442082754]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Timer" type="Timer" parent="." unique_id=981402712]
+wait_time = 2.0
+autostart = true
+
+[node name="Button2" type="AudioStreamPlayer" parent="." unique_id=395413950]
+stream = ExtResource("2_rarhi")
+
+[node name="Mouse" type="Polygon2D" parent="." unique_id=881848085]
+modulate = Color(0.66066414, 1, 0, 1)
+scale = Vector2(0.5944685, 0.5944685)
+offset = Vector2(-15, -35)
+texture = SubResource("GradientTexture2D_fcnqv")
+polygon = PackedVector2Array(15.043457, 3.950718, 36.44455, 55.859764, -6.3576355, 55.859764)
+uv = PackedVector2Array(5.666321, -42, 54.841324, 37.284664, -6.3955383, 55.41625)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
