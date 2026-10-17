@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dtvw5jo86awt5"
+path="res://.godot/imported/chainlink_fence.obj-73ed97c5eaaff41cdfb8f27325729905.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chainlink_fence.obj-73ed97c5eaaff41cdfb8f27325729905.mesh"]
+
+source_file="res://assets/chainlink_fence.obj"
+dest_files=["res://.godot/imported/chainlink_fence.obj-73ed97c5eaaff41cdfb8f27325729905.mesh", "res://.godot/imported/chainlink_fence.obj-73ed97c5eaaff41cdfb8f27325729905.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

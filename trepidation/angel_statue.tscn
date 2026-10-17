@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://hedy1i546oid"]
+
+[ext_resource type="Texture2D" uid="uid://dljijp6qxq73m" path="res://textures/angel.png" id="1_ed68y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tb11q"]
+size = Vector3(1, 5.462799, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p6l0"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_ed68y")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 2
+billboard_keep_scale = true
+
+[node name="collision" type="Area3D" unique_id=1422266802]
+collision_layer = 8
+collision_mask = 6
+
+[node name="hitbox" type="CollisionShape3D" parent="." unique_id=133839231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8709564, 0)
+shape = SubResource("BoxShape3D_tb11q")
+
+[node name="statue" type="Sprite3D" parent="." unique_id=687162128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6759863, 0)
+material_override = SubResource("StandardMaterial3D_1p6l0")
+texture = ExtResource("1_ed68y")
