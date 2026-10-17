@@ -1,0 +1,542 @@
+[gd_scene format=3 uid="uid://buqd67kpngw5n"]
+
+[ext_resource type="Script" uid="uid://dbymo4aymu2ra" path="res://scenes/shop.gd" id="1_1l46r"]
+[ext_resource type="Texture2D" uid="uid://dqb5pigp3keye" path="res://shop/shopmock.png" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://rrg1x6sixfv6" path="res://UI/hotbar/hotbar_element.tscn" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://b78qq1d35253i" path="res://textures/InfectOverlay.jpg" id="4_2fc2m"]
+[ext_resource type="FontFile" uid="uid://k567bjm7if55" path="res://fonts/ROMANTIC.TTF" id="4_032fp"]
+[ext_resource type="AudioStream" uid="uid://ctqggr6plormo" path="res://sounds/Button.ogg" id="6_8r1wq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y6sft"]
+load_path = "res://.godot/imported/polaroidpack.png-293b272e29f9a3624936da77cbbd96f5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8r1wq"]
+load_path = "res://.godot/imported/polaroid-icon.png-0bf66f99b05df1e966705b837d9d11cc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ajxib"]
+load_path = "res://.godot/imported/polaroid-icon.png-0bf66f99b05df1e966705b837d9d11cc.ctex"
+
+[node name="Shop" type="CanvasLayer" unique_id=1589859232]
+layer = 6
+script = ExtResource("1_1l46r")
+
+[node name="Shop" type="Control" parent="." unique_id=1366618274]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopBackground" type="TextureRect" parent="Shop" unique_id=2086164301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lx5au")
+
+[node name="Buy" type="Control" parent="Shop" unique_id=2027580972]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Merchandise" type="Control" parent="Shop/Buy" unique_id=208162262]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -29.0
+offset_right = -576.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Shop/Buy/Merchandise" unique_id=703551794]
+modulate = Color(0, 0.4948325, 1.3139563, 1)
+layout_mode = 1
+offset_left = -36.0
+offset_top = -268.0
+offset_right = 537.0
+offset_bottom = 138.0
+texture = ExtResource("4_2fc2m")
+expand_mode = 1
+
+[node name="ItemFrame" type="VBoxContainer" parent="Shop/Buy/Merchandise" unique_id=2056196882]
+layout_mode = 1
+offset_top = -237.0
+offset_right = 400.0
+offset_bottom = -37.0
+theme_override_constants/separation = 200
+
+[node name="TopRow" type="HBoxContainer" parent="Shop/Buy/Merchandise/ItemFrame" unique_id=1799136283]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="ItemFrame" parent="Shop/Buy/Merchandise/ItemFrame/TopRow" unique_id=356729804 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="PolaroidPack" type="TextureRect" parent="Shop/Buy/Merchandise/ItemFrame/TopRow/ItemFrame" unique_id=923724572]
+modulate = Color(0.9495979, 0.85944074, 0.5642675, 1)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 126.0
+offset_bottom = 130.0
+texture = SubResource("CompressedTexture2D_y6sft")
+expand_mode = 1
+
+[node name="Interact" type="Button" parent="Shop/Buy/Merchandise/ItemFrame/TopRow/ItemFrame" unique_id=1357191711]
+layout_mode = 1
+offset_right = 155.0
+offset_bottom = 155.0
+flat = true
+
+[node name="ItemFrame2" parent="Shop/Buy/Merchandise/ItemFrame/TopRow" unique_id=1470594692 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Shop/Buy/Merchandise/ItemFrame/TopRow/ItemFrame2" unique_id=1322818528]
+layout_mode = 1
+offset_left = 2.999999
+offset_top = 35.000004
+offset_right = 106.0
+offset_bottom = 160.0
+rotation = -0.45996305
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 50
+text = "out of 
+stock"
+horizontal_alignment = 1
+
+[node name="ItemFrame3" parent="Shop/Buy/Merchandise/ItemFrame/TopRow" unique_id=803090958 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Shop/Buy/Merchandise/ItemFrame/TopRow/ItemFrame3" unique_id=205003963]
+layout_mode = 0
+offset_left = 2.999999
+offset_top = 35.000004
+offset_right = 106.0
+offset_bottom = 160.0
+rotation = -0.45996305
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 50
+text = "out of 
+stock"
+horizontal_alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="Shop/Buy/Merchandise/ItemFrame" unique_id=31292846]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="ItemFrame" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow" unique_id=1974415268 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow/ItemFrame" unique_id=1450262314]
+layout_mode = 0
+offset_left = 2.999999
+offset_top = 35.000004
+offset_right = 106.0
+offset_bottom = 160.0
+rotation = -0.45996305
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 50
+text = "out of 
+stock"
+horizontal_alignment = 1
+
+[node name="ItemFrame2" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow" unique_id=1935407556 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow/ItemFrame2" unique_id=262591418]
+layout_mode = 0
+offset_left = 2.999999
+offset_top = 35.000004
+offset_right = 106.0
+offset_bottom = 160.0
+rotation = -0.45996305
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 50
+text = "out of 
+stock"
+horizontal_alignment = 1
+
+[node name="ItemFrame3" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow" unique_id=1539876859 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Shop/Buy/Merchandise/ItemFrame/BottomRow/ItemFrame3" unique_id=1046224042]
+layout_mode = 0
+offset_left = 2.999999
+offset_top = 35.000004
+offset_right = 106.0
+offset_bottom = 160.0
+rotation = -0.45996305
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 50
+text = "out of 
+stock"
+horizontal_alignment = 1
+
+[node name="TextBox" type="Control" parent="Shop/Buy" unique_id=565112634]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Shop/Buy/TextBox" unique_id=335383643]
+modulate = Color(0, 0.495, 1.314, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.72300005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5040283
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_2fc2m")
+expand_mode = 1
+
+[node name="Buy" type="Label" parent="Shop/Buy/TextBox" unique_id=1575285061]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -166.0
+offset_right = 1084.0
+offset_bottom = -116.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "Buy polaroid 20x pack for $30?"
+
+[node name="Accept" type="Button" parent="Shop/Buy/TextBox" unique_id=967158105]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -85.0
+offset_right = 143.0
+offset_bottom = -22.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "YES"
+
+[node name="Deny" type="Button" parent="Shop/Buy/TextBox" unique_id=804298911]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -85.0
+offset_right = -71.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "NO
+"
+
+[node name="Sell" type="Control" parent="Shop" unique_id=1093138967]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Polaroids" type="Control" parent="Shop/Sell" unique_id=858315084]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -29.0
+offset_right = -576.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Shop/Sell/Polaroids" unique_id=213535668]
+modulate = Color(0, 0.4948325, 1.3139563, 1)
+layout_mode = 1
+offset_left = -36.0
+offset_top = -268.0
+offset_right = 537.0
+offset_bottom = 138.0
+texture = ExtResource("4_2fc2m")
+expand_mode = 1
+
+[node name="ItemFrame" type="VBoxContainer" parent="Shop/Sell/Polaroids" unique_id=158852538]
+layout_mode = 1
+offset_top = -237.0
+offset_right = 400.0
+offset_bottom = -37.0
+theme_override_constants/separation = 200
+
+[node name="TopRow" type="HBoxContainer" parent="Shop/Sell/Polaroids/ItemFrame" unique_id=935080638]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="Polaroid" parent="Shop/Sell/Polaroids/ItemFrame/TopRow" unique_id=1462882961 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="Polaroid" type="TextureRect" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/Polaroid" unique_id=1877291082]
+self_modulate = Color(2.0270817, 1.502666, 1.2423298, 1)
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 152.0
+texture = SubResource("CompressedTexture2D_8r1wq")
+expand_mode = 1
+
+[node name="Polaroids" type="Button" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/Polaroid" unique_id=736882246]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 147.0
+flat = true
+
+[node name="Amount" type="Label" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/Polaroid" unique_id=1466249243]
+modulate = Color(2.638209, 2.638209, 2.638209, 1)
+layout_mode = 1
+offset_left = 109.0
+offset_top = 111.0
+offset_right = 126.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="PolaroidVariant" parent="Shop/Sell/Polaroids/ItemFrame/TopRow" unique_id=135555775 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="PolaroidVariant" type="TextureRect" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/PolaroidVariant" unique_id=1646948104]
+modulate = Color(1.0413129, 0.7162818, 0.30915993, 1)
+self_modulate = Color(2.0270817, 1.502666, 1.2423298, 1)
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 152.0
+texture = SubResource("CompressedTexture2D_ajxib")
+expand_mode = 1
+
+[node name="PolaroidVariants" type="Button" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/PolaroidVariant" unique_id=65059947]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+flat = true
+
+[node name="Amount" type="Label" parent="Shop/Sell/Polaroids/ItemFrame/TopRow/PolaroidVariant" unique_id=1881393050]
+modulate = Color(2.638209, 2.638209, 2.638209, 1)
+layout_mode = 0
+offset_left = 109.0
+offset_top = 111.0
+offset_right = 126.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="ItemFrame3" parent="Shop/Sell/Polaroids/ItemFrame/TopRow" unique_id=324262601 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="BottomRow" type="HBoxContainer" parent="Shop/Sell/Polaroids/ItemFrame" unique_id=69877408]
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="ItemFrame" parent="Shop/Sell/Polaroids/ItemFrame/BottomRow" unique_id=615706519 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="ItemFrame2" parent="Shop/Sell/Polaroids/ItemFrame/BottomRow" unique_id=563153349 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="ItemFrame3" parent="Shop/Sell/Polaroids/ItemFrame/BottomRow" unique_id=1352435541 instance=ExtResource("2_xfvoa")]
+modulate = Color(0.4745098, 0.54509807, 1, 1)
+layout_mode = 2
+
+[node name="TextBox" type="Control" parent="Shop/Sell" unique_id=836697578]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Shop/Sell/TextBox" unique_id=1710229252]
+modulate = Color(0, 0.495, 1.314, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.72300005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5040283
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_2fc2m")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="Shop/Sell/TextBox" unique_id=1727823648]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -172.0
+offset_right = 1084.0
+offset_bottom = -122.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "sell NOW"
+
+[node name="Yes" type="Button" parent="Shop/Sell/TextBox" unique_id=2068493625]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -85.0
+offset_right = 143.0
+offset_bottom = -22.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "YES"
+
+[node name="Deny" type="Button" parent="Shop/Sell/TextBox" unique_id=1443263519]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -85.0
+offset_right = -71.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 40
+text = "NO
+"
+
+[node name="Options" type="Control" parent="Shop" unique_id=1263870178]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Buy" type="Button" parent="Shop/Options" unique_id=1107942589]
+layout_mode = 0
+offset_left = -369.0
+offset_top = -202.0
+offset_right = -105.0
+offset_bottom = -98.0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 60
+text = "BUY "
+
+[node name="Sell" type="Button" parent="Shop/Options" unique_id=1110408308]
+layout_mode = 0
+offset_left = -369.0
+offset_top = -49.0
+offset_right = -105.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 60
+text = "SELL"
+
+[node name="Exit" type="Button" parent="Shop" unique_id=2144798703]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 106.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9499975, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.99998564, 0.37443253, 0.30859685, 1)
+theme_override_colors/font_hover_color = Color(0.80813736, 3.3210217e-06, 4.813075e-07, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 80
+text = "X "
+flat = true
+
+[node name="Back" type="Button" parent="Shop" unique_id=1180787590]
+visible = false
+layout_mode = 1
+offset_right = 164.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
+[node name="Money" type="Label" parent="Shop" unique_id=2071150963]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 60.0
+offset_right = 101.0
+offset_bottom = 134.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_032fp")
+theme_override_font_sizes/font_size = 60
+text = "$40"
+
+[node name="SFX" type="Node" parent="." unique_id=1864013075]
+
+[node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=1583155117]
+stream = ExtResource("6_8r1wq")
+
+[connection signal="pressed" from="Shop/Buy/Merchandise/ItemFrame/TopRow/ItemFrame/Interact" to="." method="_on_interact_pressed"]
+[connection signal="pressed" from="Shop/Buy/TextBox/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="Shop/Buy/TextBox/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Shop/Sell/Polaroids/ItemFrame/TopRow/Polaroid/Polaroids" to="." method="_on_polaroids_pressed"]
+[connection signal="pressed" from="Shop/Sell/Polaroids/ItemFrame/TopRow/PolaroidVariant/PolaroidVariants" to="." method="_on_polaroid_variants_pressed"]
+[connection signal="pressed" from="Shop/Sell/TextBox/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Shop/Sell/TextBox/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Shop/Options/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="Shop/Options/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="Shop/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Shop/Back" to="." method="_on_back_pressed"]
